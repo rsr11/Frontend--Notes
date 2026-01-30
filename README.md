@@ -18,5 +18,8 @@ Lazy Loading
 
 "After React 19v"
 
+react-compilar
+-now no need for useMemo,React.memo and useCallback 
+
 
 
