@@ -13,4 +13,10 @@ Memoization
 Debounce/Throttle
 - It's best to stop sending multiple api on a shorter time period, we should make a function for debouncing and throttling too (throttling help to prevent multiple dom changes in a shorter time period).
 
+Lazy Loading
+- it's mean we don't have to download everthing at starting because of that at starting the page load late, but if we download the basic file that we have to show at frontend then when ever we require that code aur api call, we aur assest we can download it at that time and between that time we will show loader for good user experience.
+
+"After React 19v"
+
+
 
