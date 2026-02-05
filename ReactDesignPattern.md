@@ -178,6 +178,45 @@ export default Form
 ```
 
 ### - Compound components pattern
+Compound Components Pattern is a React design pattern where multiple related components work together by sharing implicit state through a common parent, usually using Context, allowing a clean, flexible, and expressive API without prop drilling.
+
+<br>
+❌ 1️⃣ Normal / Props-based Modal
+
+```
+<Modal isOpen={isOpen} onClose={setIsOpen}>
+  <Header />
+  <Body />
+</Modal>
+
+
+function Modal({ isOpen, onClose, children }) {
+  if (!isOpen) return null;
+
+  return (
+    <div>
+      <button onClick={() => onClose(false)}>Close</button>
+      {children}
+    </div>
+  );
+}
+```
+
+<br>
+Here is how compound component pattern works - ✅
+
+```
+<Modal>
+  <Modal.Open>Open</Modal.Open>
+
+  <Modal.Content>
+    <Modal.Header />
+    <Modal.Body>Hello 👋</Modal.Body>
+    <Modal.Close />
+  </Modal.Content>
+</Modal>
+
+```
     
 ### - Render Props Pattern
 ### - Higher- order Component
