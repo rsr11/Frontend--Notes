@@ -211,5 +211,6 @@ function ExpensiveComponent({ data, onClick }) {
   );
 }
 ```
-
+- Meta Data for SEO\
+Now you can integrate metadata tags direct in react in every component and where you want and react will automatically linked them and set them in head of html. before react 19 we werer dependend on 3rd party library like react-helmet  .
 
