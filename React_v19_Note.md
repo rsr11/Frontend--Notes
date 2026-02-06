@@ -164,6 +164,52 @@ export default App;
 ```
 <br>
 
-- React compiler \
-React 19 introduces the React Compiler, a tool that significantly optimizes the compilation process of JSX and JavaScript. This improvement helps speed up the build process, reduces runtime overhead, and improves the performance of React applications.
+- React Compiler \
+React 19 introduces the React Compiler, It is a new build-time tool that automatically optimizes your React app. It works with plain JavaScript, and understands the Rules of React, so you don’t need to rewrite any code to use it.<br><br>
+React Compiler automatically optimizes your React application at build time. React is often fast enough without optimization, but sometimes you need to manually memoize components and values to keep your app responsive. This manual memoization is tedious, easy to get wrong, and adds extra code to maintain. React Compiler does this optimization automatically for you, freeing you from this mental burden so you can focus on building features.<br><br>
+<u>_Before React Compilar_</u>\
+You need to manually memoize components and values to optimize re-renders:
+```
+import { useMemo, useCallback, memo } from 'react';
+
+const ExpensiveComponent = memo(function ExpensiveComponent({ data, onClick }) {
+  const processedData = useMemo(() => {
+    return expensiveProcessing(data);
+  }, [data]);
+
+  const handleClick = useCallback((item) => {
+    onClick(item.id);
+  }, [onClick]);
+
+  return (
+    <div>
+      {processedData.map(item => (
+        <Item key={item.id} onClick={() => handleClick(item)} />
+      ))}
+    </div>
+  );
+});
+```
+<br>
+
+<u>_After React Compilar_</u>\
+You can write the same code without manual memoization:
+```
+function ExpensiveComponent({ data, onClick }) {
+  const processedData = expensiveProcessing(data);
+
+  const handleClick = (item) => {
+    onClick(item.id);
+  };
+
+  return (
+    <div>
+      {processedData.map(item => (
+        <Item key={item.id} onClick={() => handleClick(item)} />
+      ))}
+    </div>
+  );
+}
+```
+
 
